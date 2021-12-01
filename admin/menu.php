@@ -52,43 +52,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 wp_enqueue_style( 'RBAPP_style_admin' );
 		 if ( isset( $_POST['saveSettings'] ) ) {
 		 	var_dump($_POST);
-		 }
-		// 	$apiProvider = $_POST['api_provider'];
-		// 	$apiKey      = $_POST['apikey'];
-		// 	$symbols     = $_POST['symbols'];
-		// 	$curreny     = $_POST['Currency'];
-		// 	$title     = $_POST['title'];
-		// 	update_option( 'CPW_api_provider', $apiProvider );
-		// 	update_option( 'CPW_symbols', $symbols );
-		// 	update_option( 'CPW_currency', $curreny );
-		// 	update_option( 'CPW_Title_State', $title );
-		// 	if ( $apiProvider == "coinmarketcap" && ! CPW_Get_Key_Info( $apiKey ) ) {
-		// 		update_option( 'CPW_apikey', $apiKey );
-		// 		CPW_Update_Crypto_Data( $apiKey, $symbols );
-		// 		global $wpdb;
-		// 		$table_name = $wpdb->base_prefix . 'crypto_price_shortcode';
-		// 		CPW_Save_DB_Data( $CPW_Coin_Splited = explode( ",", $symbols ), $table_name, $apiKey, $curreny );
-		// 	} else {
-		// 		//error api key not found
-		// 		update_option( 'CPW_apikey', 'The API key entered is invalid' );
-		// 		echo '<div class="cpw_error">'.__('The API key entered is invalid','CPW').'</div>';
-		// 	}
-		// 	//echo $apiProvider . $apiKey . $symbols;
-
-
-		// 	echo '<div class="cpw_success">'.__('Settings Saved!','CPW').'</div>';
-		// }
-		// echo isset( CPW_SETTING_DATA['2'] ) && CPW_SETTING_DATA['2'] !== "The API key entered is invalid" ? '<div class="cpw_info">' . CPW_Get_Key_Info( CPW_SETTING_DATA['2'], 1 ) . '</div>' : '<div class="cpw_error">'.__('The API key entered is invalid','CPW').'</div>';
-		// //echo '<div class="cpw_info">'. CPW_Get_Crypto_Info(CPW_SETTING_DATA['2'], 'btc')['name'] . '</div>';
-		// define( 'CPW_SETTING_DATA_New',
-		// 	[
-		// 		'1' => get_option( 'CPW_api_provider' ),
-		// 		'2' => get_option( 'CPW_apikey' ),
-		// 		'3' => get_option( 'CPW_symbols' ),
-		// 		'4' => get_option( 'CPW_currency' ),
-		// 		'5' => get_option( 'CPW_Title_State' )
-		// 	]
-		// );
+		 
+		 	$apiProvider = $_POST['api_provider'];
+		 	$apiKey      = $_POST['apikey'];
+		 	$NewPostNotifState     = $_POST['RBAPP_npn'];
+		 	$UpdatePostNotifState     = $_POST['RBAPP_upn'];		
+			update_option( 'RBAPP_api_provider', $apiProvider );
+			update_option( 'RBAPP_apikey', $apiKey );
+			update_option( 'RBAPP_npn', $NewPostNotifState );
+			update_option( 'RBAPP_upn', $UpdatePostNotifState );
+		 	echo '<div class="RBAPP_success">'.__('Settings Saved!','RBAPP').'</div>';
+		}
+		define( 'RBAPP_SETTING_DATA_New',
+			[
+				'1' => get_option( 'RBAPP_api_provider' ),
+				'2' => get_option( 'RBAPP_apikey' ),
+				'3' => get_option( 'RBAPP_npn' ),
+				'4' => get_option( 'RBAPP_upn' )
+			]
+		);
 		require_once Rapp_PLUGIN_PATH . 'admin/template/settings.php';
 	}
 
