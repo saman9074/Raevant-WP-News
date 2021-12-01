@@ -8,7 +8,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-	function CPW_Admin_Add_Menu() {
+	function RBAPP_Admin_Add_Menu() {
 		add_menu_page
 		(
 			__('Raevant Blog App','RBAPP'),
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		// require_once CPW_INC . 'admin/api/coinmarketcap.php';
 		 wp_enqueue_style( 'RBAPP_style_admin' );
 		 if ( isset( $_POST['saveSettings'] ) ) {
-		 	var_dump($_POST);
+		 	//var_dump($_POST);
 		 
 		 	$apiProvider = $_POST['api_provider'];
 		 	$apiKey      = $_POST['apikey'];
@@ -74,7 +74,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		require_once Rapp_PLUGIN_PATH . 'admin/template/settings.php';
 	}
 
-	add_action( 'admin_menu', 'CPW_Admin_Add_Menu' );
+	add_action( 'admin_menu', 'RBAPP_Admin_Add_Menu' );
 
 
 	function CPW_getCryptoNameFromDB( $symbol ) {
@@ -130,5 +130,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
     function RBAPP_Admin_Menu_Categories_CallBack() {
+
+		wp_enqueue_style( 'RBAPP_style_admin' );
+		if ( isset( $_POST['saveCategories'] ) ) {
+			//var_dump($_POST);
+		
+			$Categories_ids = $_POST['RBAPP_categories'];				
+		   
+		   update_option( 'RBAPP_categories', $Categories_ids );
+			echo '<div class="RBAPP_success">'.__('Settings Saved!','RBAPP').'</div>';
+	   }
+	   define( 'RBAPP_Cat_DATA_New',
+		   [
+			   '1' => get_option( 'RBAPP_categories' )			
+		   ]
+	   );
+
+	   
 		require_once Rapp_PLUGIN_PATH . 'admin/template/categories.php';
 	}

@@ -18,12 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
             <!--            <p class="top-info">Want to become a member of our Gym? Then start by filling our form to complete registration. We will contact you shortly to notify you about your membership card.</p>-->
             <p><?php _e('Categories ID','RBAPP') ?><span class="required">*</span></p>
             <div class="item">
-                <input type="text" name="apikey"
+                <input type="text" name="RBAPP_categories"
                     placeholder="<?php _e('eg: 1,5,24','CPW') ?>"
-                    value='<?php //echo isset(CPW_SETTING_DATA_New['2']) ? CPW_SETTING_DATA_New['2']:''; ?>' required />
+                    value='<?php echo isset(RBAPP_Cat_DATA_New['1']) ? RBAPP_Cat_DATA_New['1']:''; ?>' required />
             </div>
             <div class="btn-block">
-                <button type="submit" name="saveSettings"><?php _e('Save','RBAPP') ?></button>
+                <button type="submit" name="saveCategories"><?php _e('Save','RBAPP') ?></button>
             </div>
         </form>
     </div>

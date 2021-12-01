@@ -88,35 +88,30 @@ return $response;
 function get_user_custom_categories($request){
 
 //get_cat_from_saved_user_selection
+
+$custom_user_ids = explode(",", get_option( 'RBAPP_categories' )); 
 $post_output = [];
 $categories = get_categories( array(
     'orderby' => 'name',
     'order'   => 'ASC'
 ) );
- 
-foreach( $categories as $category ) {
-    $custom_user_ids = ["25", "26"];
-    foreach ($custom_user_ids as $ids){
-        if($category->term_id == $ids){
-            $post_output[]= (object)[
-                "id" => $category->term_id,
-                "name" => $category->name,
-                "count" => $category->count,
-                "parent" => $category->parent,
-            ];
+ if(!empty($custom_user_ids)){
+    foreach( $categories as $category ) {
+        //$custom_user_ids = ["25", "26"];
+        foreach ($custom_user_ids as $ids){
+            if($category->term_id == $ids){
+                $post_output[]= (object)[
+                    "id" => $category->term_id,
+                    "name" => $category->name,
+                    "count" => $category->count,
+                    "parent" => $category->parent,
+                ];
+            }
         }
-    }
-} 
-
-
-
-// $post_output =(object)[
-//     "id" => $post->ID,
-//     "name" => $post->post_date,
-//     "count" => $post->post_title,
-//     "parent" => get_category($post_categories[1])->name,
-// ];
-
+    } 
+ }else{
+    return new WP_Error('empty_categories', 'categories in plugin not set.', array('status' => 404));
+ }
 
 $response = new WP_REST_Response($post_output);
 $response->set_status(200);
