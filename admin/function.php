@@ -95,7 +95,7 @@ $categories = get_categories( array(
     'orderby' => 'name',
     'order'   => 'ASC'
 ) );
- if(!empty($custom_user_ids)){
+ if(!empty(get_option( 'RBAPP_categories' ))){
     foreach( $categories as $category ) {
         //$custom_user_ids = ["25", "26"];
         foreach ($custom_user_ids as $ids){
