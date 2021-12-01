@@ -33,8 +33,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <p><?php _e('API Provider','RBAPP') ?><span class="required">*</span></p>
                 <div class="item">
                     <select name="api_provider">
-                        <option value="coinmarketcap" <?php if(RBAPP_SETTING_DATA_New['1'] == 'najva'){ echo ' selected="selected"'; } ?> >najva</option>
-                        <option value="cryptocompare" --><?php if(CPW_SETTING_DATA['1'] == 'push-pole'){ echo ' selected="selected"'; } ?>>push-pole</option>
+                        <option value="najva" <?php if(RBAPP_SETTING_DATA_New['1'] == 'najva'){ echo ' selected="selected"'; } ?> >najva</option>
+                        <option value="push-pole" --><?php if(RBAPP_SETTING_DATA_New['1'] == 'push-pole'){ echo ' selected="selected"'; } ?>>push-pole</option>
                     </select>
                 </div>
 
