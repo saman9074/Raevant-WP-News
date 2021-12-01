@@ -92,8 +92,8 @@ function get_user_custom_categories($request){
 $custom_user_ids = explode(",", get_option( 'RBAPP_categories' )); 
 $post_output = [];
 $categories = get_categories( array(
-    'orderby' => 'name',
-    'order'   => 'ASC'
+    // 'orderby' => 'name',
+    // 'order'   => 'ASC'
 ) );
  if(!empty(get_option( 'RBAPP_categories' ))){
     foreach( $categories as $category ) {
