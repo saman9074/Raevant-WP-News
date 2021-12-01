@@ -49,9 +49,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	function RBAPP_Admin_Menu_General_CallBack() {
 		// require_once CPW_INC . 'admin/api/coinmarketcap.php';
-		 wp_enqueue_style( 'cpw_style_admin' );
-		// if ( isset( $_POST['saveSettings'] ) ) {
-		// 	//var_dump($_POST);
+		 wp_enqueue_style( 'RBAPP_style_admin' );
+		 if ( isset( $_POST['saveSettings'] ) ) {
+		 	var_dump($_POST);
+		 }
 		// 	$apiProvider = $_POST['api_provider'];
 		// 	$apiKey      = $_POST['apikey'];
 		// 	$symbols     = $_POST['symbols'];
