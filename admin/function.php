@@ -96,19 +96,32 @@ $categories = get_categories( array(
     'order'   => 'ASC'
 ) );
  if(!empty(get_option( 'RBAPP_categories' ))){
-    foreach( $categories as $category ) {
-        //$custom_user_ids = ["25", "26"];
-        foreach ($custom_user_ids as $ids){
+    // foreach( $categories as $category ) {
+    //     //$custom_user_ids = ["25", "26"];
+    //     foreach ($custom_user_ids as $ids){
+    //         if($category->term_id == $ids){
+    //             $post_output[]= (object)[
+    //                 "id" => $category->term_id,
+    //                 "name" => $category->name,
+    //                 "count" => $category->count,
+    //                 "parent" => $category->parent,
+    //             ];
+    //         }
+    //     }
+    // } 
+    foreach ($custom_user_ids as $ids){
+        foreach($categories as $category){
             if($category->term_id == $ids){
-                $post_output[]= (object)[
-                    "id" => $category->term_id,
-                    "name" => $category->name,
-                    "count" => $category->count,
-                    "parent" => $category->parent,
-                ];
+                            $post_output[]= (object)[
+                                "id" => $category->term_id,
+                                "name" => $category->name,
+                                "count" => $category->count,
+                                "parent" => $category->parent,
+                            ];
             }
         }
-    } 
+    }
+
  }else{
     return new WP_Error('empty_categories', 'categories in plugin not set.', array('status' => 404));
  }
