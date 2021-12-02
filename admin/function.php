@@ -26,7 +26,11 @@ register_rest_route( 'wp/v2', 'get-categories', array(
 
 function get_latest_posts_by_category()
 {
-$args = array('category' => $_REQUEST['c']);
+$args = array(
+    'category' => $_REQUEST['c'],
+    'paged' => ($_REQUEST['page_no'] ? $_REQUEST['page_no'] : 1),
+    'post_per_page' => $_REQUEST['page_size'],
+);
 
 $posts = get_posts( $args );
 
